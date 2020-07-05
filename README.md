@@ -1,8 +1,6 @@
 # Puma::Benchmark
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/puma/benchmark`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+This gem will help in setting right number of workers and threads for your application.
 
 ## Installation
 
@@ -23,22 +21,21 @@ Or install it yourself as:
 ## Usage
 
 puma-benchmark [options]
+
     -b, --base_url [BASE_URL]        Application base url for benchmarking
+    
     -a, --api API                    API for benchmarking
+   
     -t, --threads [Max Thread]       Max thread to be used per worker
+    
     -w, --workers [Max Worker]       Max worker to be used for benchmarking
+    
     -h, --help                       Prints this help
+    
 
 ## Result
 
-+-----------------+-----------------+----------------------+
-| No. of workers  | No. of threads  | No. of requests/sec  |
-+-----------------+-----------------+----------------------+
-| 1               | 1               | 396.67               |
-| 1               | 2               | 351.25               |
-| 2               | 1               | 708.26               |
-| 2               | 2               | 656.22               |
-+-----------------+-----------------+----------------------+
+![result](https://raw.githubusercontent.com/anilmaurya/puma-benchmark/master/puma-benchmark-result.png)
 
 ## Development
 
