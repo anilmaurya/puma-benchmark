@@ -8,8 +8,8 @@ module Puma
       def initialize(params)
         @base_url    = params[:base_url] || 'http://localhost:3000'
         @api         = params[:api]
-        @max_threads = params[:threads].to_i || 4
-        @max_workers = params[:workers].to_i || 4
+        @max_threads = (params[:threads] || 4).to_i
+        @max_workers = (params[:workers]|| 4).to_i
         @duration    = params[:duration] || 30
         @environment = params[:environment] || 'production'
         @result      = []
