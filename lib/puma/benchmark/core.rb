@@ -6,11 +6,13 @@ module Puma
   module Benchmark
     class Core
       def initialize(params)
-        @base_url = params[:base_url] || 'http://localhost:3000'
-        @api = params[:api]
-        @max_threads = params[:threads] || 5
-        @max_workers = params[:max_workers] || 4
-        @result = []
+        @base_url    = params[:base_url] || 'http://localhost:3000'
+        @api         = params[:api]
+        @max_threads = params[:threads].to_i || 4
+        @max_workers = params[:workers].to_i || 4
+        @duration    = params[:duration] || 30
+        @environment = params[:environment] || 'production'
+        @result      = []
       end
 
       def current_dir
@@ -33,13 +35,13 @@ module Puma
       def process(worker_count, thread_count)
         if !File.exist?(pid_file)
           fork {
-            system("RAILS_ENV=production puma -w #{worker_count} -t #{thread_count}")
+            system("RAILS_ENV=#{@environment} puma -w #{worker_count} -t #{thread_count}")
           }
           sleep(5)
         end
 
         print_timer
-        stdout, stderr, status = Open3.capture3("wrk -t 2 -c 100 -d 30s  #{@base_url}/#{@api}")
+        stdout, stderr, status = Open3.capture3("wrk -t 2 -c 100 -d #{@duration}s  #{@base_url}/#{@api}")
         pp stdout
 
         #p "Requests / sec: #{stdout.split(' ')[-3]}"

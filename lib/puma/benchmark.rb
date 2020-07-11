@@ -21,13 +21,18 @@ module Puma
       opt_parser = OptionParser.new do |opts|
         opts.banner = "Usage: puma-benchmark [options]"
 
-        opts.on("-b", "--base_url [BASE_URL]", URI,  "Application base url for benchmarking")
+        opts.on("-b", "--base_url [BASE_URL]", URI,  "Application base url for
+                       benchmarking, default: http://localhost:3000")
 
-        opts.on("-a", "--api API", "API for benchmarking")
+        opts.on("-a", "--api API", "API for benchmarking, example: /homes.json")
+
+        opts.on("-e", "--environment", "default: production")
         
-        opts.on("-t", "--threads [Max Thread]", "Max thread to be used per worker")
+        opts.on("-t", "--threads [Max Thread]", "Max thread to be used per worker, default: 4")
 
-        opts.on("-w", "--workers [Max Worker]", "Max worker to be used for benchmarking")
+        opts.on("-w", "--workers [Max Worker]", "Max worker to be used for benchmarking, default: 4")
+
+        opts.on("-d", "--duration [Duration]", "Duration for each test (in seconds), default: 30")
 
         opts.on("-h", "--help", "Prints this help") do
           puts opts

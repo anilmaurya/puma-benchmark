@@ -4,34 +4,32 @@ This gem will help in setting right number of workers and threads for your appli
 
 ## Installation
 
-Add this line to your application's Gemfile:
+This gem uses `wrk` for benchmarking, therefore you should first install `wrk` on your machine.
+For Mac: https://github.com/wg/wrk/wiki/Installing-wrk-on-Mac-OS-X
+For Linux: https://github.com/wg/wrk/wiki/Installing-wrk-on-Linux
 
-```ruby
-gem 'puma-benchmark'
-```
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
+Install gem by command:
 
     $ gem install puma-benchmark
 
 ## Usage
 
-puma-benchmark [options]
+Usage: puma-benchmark [options]
 
-    -b, --base_url [BASE_URL]        Application base url for benchmarking
-    
-    -a, --api API                    API for benchmarking
-   
-    -t, --threads [Max Thread]       Max thread to be used per worker
-    
-    -w, --workers [Max Worker]       Max worker to be used for benchmarking
-    
+    -b, --base_url [BASE_URL]        Application base url for
+                       benchmarking, default: http://localhost:3000
+
+    -a, --api API                    API for benchmarking, example: /homes.json
+
+    -e, --environment                default: production
+
+    -t, --threads [Max Thread]       Max thread to be used per worker, default: 4
+
+    -w, --workers [Max Worker]       Max worker to be used for benchmarking, default: 4
+
+    -d, --duration [Duration]        Duration for each test (in seconds), default: 30
+
     -h, --help                       Prints this help
-    
 
 ## Result
 
@@ -45,7 +43,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/puma-benchmark. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/anilmaurya/puma-benchmark. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 ## License
 
@@ -53,4 +51,4 @@ The gem is available as open source under the terms of the [MIT License](https:/
 
 ## Code of Conduct
 
-Everyone interacting in the Puma::Benchmark project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/puma-benchmark/blob/master/CODE_OF_CONDUCT.md).
+Everyone interacting in the Puma::Benchmark project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/anilmaurya/puma-benchmark/blob/master/CODE_OF_CONDUCT.md).
